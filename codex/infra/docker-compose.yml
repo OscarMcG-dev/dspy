@@ -1,0 +1,47 @@
+version: "3.9"
+services:
+  api:
+    build: ../api
+    env_file: ../.env
+    volumes:
+      - ../data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      - otel-collector
+  frontend:
+    build: ../frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+  otel-collector:
+    image: otel/opentelemetry-collector:latest
+    volumes:
+      - ./otel-collector-config.yaml:/etc/otelcol/config.yaml
+    ports:
+      - "4317:4317"
+  grafana:
+    image: grafana/grafana:latest
+    volumes:
+      - ./grafana:/etc/grafana
+    ports:
+      - "3001:3000"
+  tempo:
+    image: grafana/tempo:latest
+    ports:
+      - "3200:3200"
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+  litestream:
+    image: litestream/litestream:latest
+    command: ["-config", "/etc/litestream.yml", "replicate"]
+    volumes:
+      - ../data:/data
+      - ./litestream.yml:/etc/litestream.yml:ro
