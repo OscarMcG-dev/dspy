@@ -1,0 +1,12 @@
+fastapi==0.115.0
+uvicorn[standard]==0.30.6
+opentelemetry-sdk==1.27.0
+opentelemetry-exporter-otlp-proto-grpc==1.27.0
+pydantic==2.9.2
+typing-extensions==4.12.2
+python-dotenv==1.0.1
+# Future tasks (not required for simple health test)
+dspy-ai==2.5.43
+mlflow==2.16.0
+datasets==3.0.2
+promptfoo==0.86.0

@@ -1,0 +1,11 @@
+prompts:
+  - "Summarize: {{text}}"
+providers:
+  - openai:gpt-4o-mini
+tests:
+  - vars: { text: "Donoghue v Stevenson ... duty of care" }
+    assert:
+      - type: contains
+        value: "duty of care"
+      - type: length
+        lt: 1200
