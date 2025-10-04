@@ -1,0 +1,14 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "panels": [],
+  "schemaVersion": 38,
+  "tags": ["codex"],
+  "templating": {"list": []},
+  "time": {"from": "now-6h", "to": "now"},
+  "timezone": "browser",
+  "title": "Codex Overview",
+  "version": 1
+}

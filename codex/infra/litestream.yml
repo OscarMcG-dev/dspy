@@ -1,0 +1,4 @@
+dbs:
+  - path: /data/app.db
+    replicas:
+      - url: s3://codex-backups/app.db
